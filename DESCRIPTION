@@ -1,0 +1,12 @@
+Package: dlfUtils
+Type: Package
+Title: Utilites used by Dayne Filer and his packages.
+Version: 0.1.0
+Authors@R: c(person("Dayne L", "Filer", 
+    role = c("aut", "cre"), 
+    email = "dayne.filer@gmail.com")) 
+Maintainer: Dayne Filer <dayne.filer@gmail.com>
+Description: To be added. 
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.0
