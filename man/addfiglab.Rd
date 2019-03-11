@@ -2,24 +2,21 @@
 % Please edit documentation in R/addfiglab.R
 \name{addfiglab}
 \alias{addfiglab}
-\title{Add a figure label}
+\title{Add a figure label in topleft-most corner}
 \usage{
-addfiglab(lab, xl = par()$mar[2], yl = par()$mar[3], cex = 1, ...)
+addfiglab(lab, font = 2, ...)
 }
 \arguments{
 \item{lab}{Character giving the figure label}
 
-\item{xl}{Number of lines into the left x margin}
-
-\item{cex}{A numerical value giving the amount by which figure label 
-should be magnified relative to the default.}
+\item{font}{the color and (if \code{vfont = NULL}) font to be
+    used, possibly vectors.  These default to the values of the global
+    \link{graphical parameters} in \code{\link{par}()}.}
 
 \item{...}{Additional parameters passed to text}
-
-\item{xy}{Number of lines intot the top y margin}
 }
 \description{
-Add a figure label based on x and y line values
+Add a figure label in topleft-most corner
 }
 \details{
 Note, 'xpd' is \code{NA} and 'adj' is {c(0, 1)}.
