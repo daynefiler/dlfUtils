@@ -18,8 +18,8 @@
 
 addfiglab <- function(lab, font = 2, ...) {
   
-  text(x = grconvertX(0, "device", "user"), 
-       y = grconvertX(1, "device", "user"), 
+  text(x = grconvertX(0, "ndc", "user"), 
+       y = grconvertY(1, "ndc", "user"), 
        lab, 
        xpd = NA, 
        adj = c(0, 1), 
