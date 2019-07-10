@@ -8,6 +8,7 @@
 #' @param relTo when rel = TRUE, the path to copy relative to
 #' @details 
 #' Submits a slurm array for rsync of multiple files
+#' @importFrom R.utils fileAccess isDirectory
 #' @export
 
 slurmRsync <- function(spath, dpath, rel = TRUE, relTo = dirname(spath)) {
