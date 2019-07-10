@@ -36,6 +36,6 @@ slurmRsync <- function(spath, dpath, rel = TRUE, relTo = dirname(spath)) {
     system(sprintf("rsync -a%svP %s %s", ifelse(rel, "R", ""), spath, dpath))
   }
   p <- data.frame(spath = spath, dpath = dpath, stringsAsFactors = FALSE)
-  slurmApply(rsync, p, "dlfRsync")
+  slurmArray(rsync, p, "dlfRsync")
   
 }
