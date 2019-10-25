@@ -4,7 +4,7 @@
 \alias{addfiglab}
 \title{Add a figure label in topleft-most corner}
 \usage{
-addfiglab(lab, font = 2, ...)
+addfiglab(lab, font = 2, units = "ndc", ...)
 }
 \arguments{
 \item{lab}{Character giving the figure label}
@@ -12,6 +12,9 @@ addfiglab(lab, font = 2, ...)
 \item{font}{the color and (if \code{vfont = NULL}) font to be
     used, possibly vectors.  These default to the values of the global
     \link{graphical parameters} in \code{\link{par}()}.}
+
+\item{units}{Character giving the device units to use -- will typically be
+'ndc' or 'nfc'}
 
 \item{...}{Additional parameters passed to text}
 }

@@ -7,6 +7,8 @@
 #' @description Add a figure label in topleft-most corner
 #' 
 #' @param lab Character giving the figure label
+#' @param units Character giving the device units to use -- will typically be
+#' 'ndc' or 'nfc'
 #' @inheritParams graphics::text
 #' @param ... Additional parameters passed to text
 #' 
@@ -16,10 +18,10 @@
 #' @importFrom graphics text par grconvertX grconvertY
 #' @export
 
-addfiglab <- function(lab, font = 2, ...) {
+addfiglab <- function(lab, font = 2, units = "ndc", ...) {
   
-  text(x = grconvertX(0, "ndc", "user"), 
-       y = grconvertY(1, "ndc", "user"), 
+  text(x = grconvertX(0, units, "user"), 
+       y = grconvertY(1, units, "user"), 
        lab, 
        xpd = NA, 
        adj = c(0, 1), 
