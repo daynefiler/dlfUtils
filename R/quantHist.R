@@ -13,5 +13,7 @@
 
 
 quantHist <- function(x, lq = 0.05, uq = 0.95, ...) {
-  hist(x[x <= quantile(x, uq) & x >= quantile(x, lq)], ...)
+  u <- x <= quantile(x, uq, na.rm = TRUE)
+  l <- x >= quantile(x, lq, na.rm = TRUE)
+  hist(x[u & l], ...)
 }
