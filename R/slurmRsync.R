@@ -7,15 +7,16 @@
 #' the -R or --relative option)?
 #' @param relTo when rel = TRUE, the path to copy relative to
 #' @details 
-#' Submits a slurm array for rsync of multiple files
+#' Submits a slurm array for rsync of multiple files.
 #' @importFrom R.utils fileAccess isDirectory
 #' @export
 
-slurmRsync <- function(spath, dpath, rel = TRUE, relTo = dirname(spath)) {
+slurmRsync <- function(spath, dpath, rel = TRUE, relTo = dirname(spath),
+                       rsyncOpts = "avP") {
   
-  stopifnot(l1chr(dpath)) 
+  stopifnot(l1chr(dpath))
   stopifnot(l1log(rel))
-  if (rel) stopifnot(l1chr(spath) && l1chr(relTo))
+  stopifnot(is.null(relTo) || l1chr(relTo))
   if (Sys.which("sbatch") == "") stop("Only applicable on slurm clusters.")
   if (Sys.which("rsync") == "") stop("rsync not found on the system path.")
   if (fileAccess(spath, mode = 0) != 0) stop("Given source does not exist.")
@@ -32,10 +33,13 @@ slurmRsync <- function(spath, dpath, rel = TRUE, relTo = dirname(spath)) {
     }
     spath <- sapply(pathParts, addPeriod)
   }
-  rsync <- function(spath, dpath) {
-    system(sprintf("rsync -a%svP %s %s", ifelse(rel, "R", ""), spath, dpath))
+  rsync <- function(spath, dpath, opt) {
+    system(sprintf("rsync -%s %s %s", opt, spath, dpath))
   }
-  p <- data.frame(spath = spath, dpath = dpath, stringsAsFactors = FALSE)
+  p <- data.frame(spath = spath, 
+                  dpath = dpath, 
+                  opt = paste0(rsyncOpts, ifelse(rel, "R", "")), 
+                  stringsAsFactors = FALSE)
   slurmArray(rsync, p, "dlfRsync")
   
 }
