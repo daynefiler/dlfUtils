@@ -119,6 +119,7 @@ getNcbiFeatures <- function(v = "GCF_000001405.26_GRCh38") {
   map <- tbl[!is.na(genome), .(seqid, genome, chromosome)]
   map[genome == "mitochondrion", chromosome := "MT"]
   tbl <- merge(tbl[ , .(seqid, type, start, end, strand, gene)], map)
+  tbl <- unique(tbl)
   tbl[]
 }
 
