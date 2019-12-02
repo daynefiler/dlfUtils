@@ -11,14 +11,6 @@ getNcbiFeatureTable <- function(v = "GCF_000001405.30_GRCh38.p4") {
                  "all_assembly_versions",
                  v)
   f <- sprintf("%s_feature_table.txt.gz", v)
-  # thiscall <- match.call()
-  # tbl <- tryCatch({
-  #   a <- fread(file.path(d, f), showProgress = FALSE)
-  # }, error = function(w) {
-  #   w$call <- thiscall
-  #   w$message <- "Could not download the feature file for the given version."
-  #   stop(w)
-  # })
   tbl <- try(suppressWarnings(fread(file.path(d, f), showProgress = FALSE)), 
              silent = TRUE)
   if (is(tbl, "try-error")) {
@@ -98,5 +90,35 @@ getNcbiChr2Acc <- function(v = "GCF_000001405.26_GRCh38") {
   out <- rbind(m1, m2)
   setnames(out, c("chr", "acc", "prefix"))
   out[]
+}
+
+getNcbiFeatures <- function(v = "GCF_000001405.26_GRCh38") {
+  ## v: chr of length 1, the NCBI version 
+  if(!curl::has_internet()) stop("Must be connected to the internet.")
+  f <- file.path("ftp:/", 
+                 "ftp.ncbi.nih.gov", 
+                 "genomes", 
+                 "refseq", 
+                 "vertebrate_mammalian", 
+                 "Homo_sapiens", 
+                 "all_assembly_versions",
+                 v,
+                 sprintf("%s_genomic.gff.gz", v))
+  cl <- c("seqid", "type", "start", "end", "strand")
+  tg <- c("gene", "genome", "chromosome", "Dbxref")
+  tmpFile <- tempfile()
+  tmp <- try(download.file(f, destfile = tmpFile, quiet = TRUE), silent = TRUE)
+  if (is(tmp, "try-error")) {
+    m <- "Could not download the feature file for the given version."
+    c <- match.call()
+    stop(simpleError(m, c))
+  }
+  tbl <- rtracklayer::readGFF(tmpFile, columns = cl, tags = tg)
+  file.remove(tmpFile)
+  tbl <- as.data.table(tbl)
+  map <- tbl[!is.na(genome), .(seqid, genome, chromosome)]
+  map[genome == "mitochondrion", chromosome := "MT"]
+  tbl <- merge(tbl[ , .(seqid, type, start, end, strand, gene)], map)
+  tbl[]
 }
 
