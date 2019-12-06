@@ -16,7 +16,7 @@ reduce3mad <- function(x, returnBound = FALSE) {
   xmed <- median(x)
   xmad <- 3*mad(x)
   rmX <- x > xmed + xmad | x < xmed - xmad
-  if (any(rmX)) x <- red3Mad(x[!rmX])
+  if (any(rmX)) x <- reduce3mad(x[!rmX])
   if (returnBound) return(xmed + c(-xmad, xmad))
   x
 }
