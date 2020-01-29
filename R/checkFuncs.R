@@ -23,3 +23,11 @@ l1int <- function(x) length(x) == 1 && is.integer(x)
 #' @export
 
 l1log <- function(x) length(x) == 1 && is.logical(x)
+
+#' @describeIn checkFuncs all same length
+#' @export
+
+allSameLength <- function(...) {
+  lens <- sapply(list(...), length)
+  all(lens == lens[1])
+} 

@@ -6,6 +6,7 @@
 \alias{l1num}
 \alias{l1int}
 \alias{l1log}
+\alias{allSameLength}
 \title{Common parameter checks}
 \usage{
 l1chr(x)
@@ -15,6 +16,8 @@ l1num(x)
 l1int(x)
 
 l1log(x)
+
+allSameLength(...)
 }
 \arguments{
 \item{x}{R object}
@@ -31,5 +34,7 @@ Common function parameter checks
 \item \code{l1int}: length 1 integer
 
 \item \code{l1log}: length 1 logical
+
+\item \code{allSameLength}: all same length
 }}
 

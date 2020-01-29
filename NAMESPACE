@@ -2,6 +2,8 @@
 
 export(addfiglab)
 export(addfiglab_line)
+export(allSameLength)
+export(alpha2opaque)
 export(calcMCC)
 export(col2alpha)
 export(combinePDF)

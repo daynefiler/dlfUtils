@@ -16,4 +16,6 @@ Modify the alpha value for given color vector
 }
 \seealso{
 \code{\link[grDevices]{col2rgb}}, \code{\link[grDevices]{rgb}}
+
+\code{\link{alpha2opaque}}
 }

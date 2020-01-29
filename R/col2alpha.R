@@ -11,6 +11,7 @@
 #' @seealso \code{\link[grDevices]{col2rgb}}, \code{\link[grDevices]{rgb}}
 #' 
 #' @importFrom grDevices col2rgb rgb
+#' @seealso \code{\link{alpha2opaque}}
 #' @export
 
 col2alpha <- function(col, alpha = 0.5) {
