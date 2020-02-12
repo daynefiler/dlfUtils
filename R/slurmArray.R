@@ -31,6 +31,8 @@ slurmArray <- function(f, params, jobname = NA, mem = 10000L,
             error = "%A_%a.err",
             output = "%A_%a.out",
             time = "10-00:00:00")
+  rTemplate <- system.file(file.path("slurmTemplates", "silentPkgSlurm.txt"), 
+                           package = "dlfUtils")
   slurm_apply(f = f, 
               params = params, 
               nodes = nj, 
@@ -40,5 +42,6 @@ slurmArray <- function(f, params, jobname = NA, mem = 10000L,
               jobname = jobname,
               libPaths = libPaths,
               submit = submit,
-              slurm_options = l)
+              slurm_options = l,
+              r_template = rTemplate)
 }
