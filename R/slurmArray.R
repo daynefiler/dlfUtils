@@ -20,7 +20,7 @@ slurmArray <- function(f, params, jobname = NA, mem = 10000L,
                        maxJobs = 500L, cpu = 1L, add_objects = NULL,
                        pkgs = rev(.packages()), submit = TRUE,
                        libPaths = NULL) {
-  chkInput <- function(x) stopifnot(is.integer(x) && length(x) == 1)
+  chkInput <- function(x) stopifnot(l1int(type.convert(x)))
   chkInput(mem); chkInput(maxJobs); chkInput(cpu)
   
   nj <- nrow(params)
