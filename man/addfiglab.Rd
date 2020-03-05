@@ -11,7 +11,7 @@ addfiglab(lab, font = 2, units = "ndc", ...)
 
 \item{font}{the color and (if \code{vfont = NULL}) font to be
     used, possibly vectors.  These default to the values of the global
-    \link{graphical parameters} in \code{\link{par}()}.}
+    \link[graphics]{graphical parameters} in \code{\link[graphics]{par}()}.}
 
 \item{units}{Character giving the device units to use -- will typically be
 'ndc' or 'nfc'}

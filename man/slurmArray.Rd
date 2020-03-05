@@ -4,9 +4,18 @@
 \alias{slurmArray}
 \title{Wrapper for rslurm::slurm_apply}
 \usage{
-slurmArray(f, params, jobname = NA, mem = 10000L, maxJobs = 500L,
-  cpu = 1L, add_objects = NULL, pkgs = rev(.packages()),
-  submit = TRUE, libPaths = NULL)
+slurmArray(
+  f,
+  params,
+  jobname = NA,
+  mem = 10000L,
+  maxJobs = 500L,
+  cpu = 1L,
+  add_objects = NULL,
+  pkgs = rev(.packages()),
+  submit = TRUE,
+  libPaths = NULL
+)
 }
 \arguments{
 \item{f}{A function that accepts one or many single values as parameters and

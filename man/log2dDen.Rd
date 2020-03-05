@@ -4,8 +4,7 @@
 \alias{log2dDen}
 \title{Calculate 2D densities on a log scale}
 \usage{
-log2dDen(x, y, nbin = 100, lims = c(range(x), range(y)),
-  freq = FALSE)
+log2dDen(x, y, nbin = 100, lims = c(range(x), range(y)), freq = FALSE)
 }
 \arguments{
 \item{x}{Numeric input for x dimension}

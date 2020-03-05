@@ -4,8 +4,7 @@
 \alias{slurmRsync}
 \title{Create slurm job array for rsync of multiple files}
 \usage{
-slurmRsync(spath, dpath, rel = TRUE, relTo = dirname(spath),
-  rsyncOpts = "avP")
+slurmRsync(spath, dpath, rel = TRUE, relTo = dirname(spath), rsyncOpts = "avP")
 }
 \arguments{
 \item{spath}{character, the source to be copied}

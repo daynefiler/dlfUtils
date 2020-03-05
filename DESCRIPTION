@@ -1,14 +1,15 @@
 Package: dlfUtils
 Type: Package
-Title: Utilites used by Dayne L Filer and R packages he contributes to.
-Version: 0.1.0
+Title: Utilites for DL Filer and Others.
+Version: 0.2.0
 Authors@R: c(person("Dayne L", "Filer", 
     role = c("aut", "cre"), 
     email = "dayne.filer@gmail.com")) 
 Maintainer: Dayne Filer <dayne.filer@gmail.com>
 Description: Assortment of utilites to do common tasks and support other R
   packages. 
+License: GSL-2
 Imports: grDevices, graphics, rslurm, data.table
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

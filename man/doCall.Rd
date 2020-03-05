@@ -4,8 +4,7 @@
 \alias{doCall}
 \title{Wrapper for do.call}
 \usage{
-doCall(f, args, ..., quote = FALSE, envir = parent.frame(),
-  warnDup = TRUE)
+doCall(f, args, ..., quote = FALSE, envir = parent.frame(), warnDup = TRUE)
 }
 \arguments{
 \item{args}{a \emph{list} of arguments to the function call.  The
