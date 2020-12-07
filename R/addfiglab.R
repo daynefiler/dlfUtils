@@ -18,14 +18,17 @@
 #' @importFrom graphics text par grconvertX grconvertY
 #' @export
 
-addfiglab <- function(lab, font = 2, units = "ndc", ...) {
-  
-  text(x = grconvertX(0, units, "user"), 
-       y = grconvertY(1, units, "user"), 
-       lab, 
-       xpd = NA, 
-       adj = c(0, 1), 
+addfiglab <- function(lab, font = 2, units = "ndc", cex = 1, ...) {
+  wadj <- strwidth(lab, units = "figure", cex = cex, font = font)
+  wadj <- grconvertX(wadj, from = "nfc", to = units)
+  hadj <- strheight(lab, units = "figure", cex = cex, font = font)
+  hadj <- grconvertY(hadj, from = "nfc", to = units)
+  text(x = grconvertX(0 + wadj, units, "user"),
+       y = grconvertY(1 - hadj, units, "user"),
+       lab,
+       xpd = NA,
+       adj = c(0.5, 0.5),
        font = font,
+       cex = cex,
        ...)
-  
 }

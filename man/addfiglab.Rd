@@ -4,7 +4,7 @@
 \alias{addfiglab}
 \title{Add a figure label in topleft-most corner}
 \usage{
-addfiglab(lab, font = 2, units = "ndc", ...)
+addfiglab(lab, font = 2, units = "ndc", cex = 1, ...)
 }
 \arguments{
 \item{lab}{Character giving the figure label}
@@ -15,6 +15,10 @@ addfiglab(lab, font = 2, units = "ndc", ...)
 
 \item{units}{Character giving the device units to use -- will typically be
 'ndc' or 'nfc'}
+
+\item{cex}{numeric \bold{c}haracter \bold{ex}pansion factor; multiplied
+    by \code{\link[graphics]{par}("cex")} yields the final character size.
+    \code{NULL} and \code{NA} are equivalent to \code{1.0}.}
 
 \item{...}{Additional parameters passed to text}
 }
